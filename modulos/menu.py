@@ -1,8 +1,9 @@
 from modulos.datos_basicos import cargar_producto
 from modulos.gestion_datos import (
     agregar_producto,
+    eliminar_producto_por_codigo,
     listar_productos,
-    eliminar_producto_por_id,
+    eliminar_producto_por_codigo,
     productos
 )
 from modulos.funciones_utiles import (
@@ -33,8 +34,8 @@ def ejecutar_menu():
             listar_productos()
 
         elif opcion == "3":
-            producto_id = int(input("Ingrese ID a eliminar: "))
-            if eliminar_producto_por_id(producto_id):
+            codigo = input("Ingrese codigo a eliminar: ")
+            if eliminar_producto_por_codigo(codigo):
                 print("Producto eliminado.")
             else:
                 print("Producto no encontrado.")

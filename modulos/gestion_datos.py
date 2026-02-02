@@ -28,11 +28,18 @@ def listar_productos():
         return
 
     for p in productos:
+        # Convertimos a entero solo si no tiene decimales
+        precio = p["precio"]
+        if precio.is_integer():
+            precio_mostrar = int(precio)
+        else:
+            precio_mostrar = precio
+
         print(
             f"ID: {p['id']} | "
             f"Codigo: {p['codigo']} | "
             f"Nombre: {p['nombre']} | "
-            f"Precio: ${p['precio']} | "
+            f"Precio: ${precio_mostrar} | "
             f"Categoria: {p['categoria']}"
         )
 
@@ -44,9 +51,9 @@ def buscar_producto_por_codigo(codigo):
     return None
 
 
-def eliminar_producto_por_id(producto_id):
+def eliminar_producto_por_codigo(codigo):
     for p in productos:
-        if p["id"] == producto_id:
+        if p["codigo"] == codigo:
             productos.remove(p)
             codigos_registrados.remove(p["codigo"])
             return True

@@ -48,5 +48,5 @@ def cargar_producto():
                 print("Opcion fuera de rango.")
         except ValueError:
             print("Error: debe ingresar un numero.")
-
+    print("Se completo el registro del producto")
     return producto
