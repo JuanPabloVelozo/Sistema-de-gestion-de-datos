@@ -41,8 +41,29 @@ def ejecutar_menu():
                 print("Producto no encontrado.")
 
         elif opcion == "4":
-            total = contar_productos(productos)
+            from modulos.gestion_datos import CATEGORIAS
+            print("0. Todos")  
+            # Mostramos categorias numeradas
+            for i, cat in enumerate(CATEGORIAS, start=1):
+                print(f"{i}. {cat}")
+            
+            opcion_cat = input("Seleccione categoria: ").strip()
+
+            if opcion_cat == "0":
+                categoria = ""
+            elif opcion_cat in [str(i) for i in range(1, len(CATEGORIAS)+1)]:
+                categoria = CATEGORIAS[int(opcion_cat)-1]
+            else:
+                print("Opcion invalida.")
+                continue 
+
+            if categoria == "":
+                total = contar_productos(productos)
+            else:
+                total = contar_productos(productos, categoria=categoria)
+
             print(f"Total de productos: {total}")
+
 
         elif opcion == "5":
             limpiar_pantalla()
